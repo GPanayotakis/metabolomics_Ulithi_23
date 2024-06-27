@@ -57,7 +57,7 @@ stupid_plot_2 <- ggplot(final_df, aes(Comp.1, Comp.2, colour = genus)) +  #pull 
 ggsave(plot = stupid_plot_2, filename = "stupid_plot_2.pdf",units = "in",width = 8.5, height = 8.5) #in indicates inches
 
 #-------------------------------------------------------------------------------
-#try a diff way
+#try a diff way = BUTTS PLOT
 
 pos_norm_ft2 <- pos_norm_ft2[, -1]
 pos_norm_ft2 <- t(pos_norm_ft2)
