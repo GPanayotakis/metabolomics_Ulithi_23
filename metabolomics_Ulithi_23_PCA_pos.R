@@ -53,7 +53,7 @@ library(ggfortify)
 
 #read the csv files
 posnorm_ft <- read.csv("ulithi_23_PCA_csv/Ulithi23_posnorm_ft_6_24.csv", header = TRUE)
-posnorm_md <- read.csv("ulithi_23_PCA_csv/Ulithi23_posnorm_md_6_24.csv", header = TRUE)
+posnorm_md <- read.csv("ulithi_23_PCA_csv/Ulithi23_posraw_md_6_26.csv", header = TRUE)
 
 
 #make the PCA
@@ -73,8 +73,8 @@ df_PC_colors <- data.frame(PC_colors)
 
 final_df <- cbind(df_PC_colors, posnorm_md) #combine the PC values with the metadata
 
-ggplot(final_df, aes(Comp.1, Comp.2, colour = genotype)) +
+stupid_plot <- ggplot(final_df, aes(Comp.1, Comp.2, colour = genus)) +
     geom_point()  +
-    ggtitle("color pretty please")
+    ggtitle("stupid plot"); stupid_plot
 
-
+ggsave(plot = stupid_plot, filename = "stupid_plot.pdf",units = "in",width = 8.5, height = 8.5)
