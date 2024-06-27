@@ -2,6 +2,9 @@ name: "metabolomics_Ulithi_23_PCA_pos"
 project: "metabolomics_Ulithi_23_PCA"
 repository: "metabolomics_Ulithi_23"
 
+#trying to change the wd to my local computer
+setwd("/R projects")
+
 #set project directory: session -> set working directory -> To Project Directory
 
 #this R file will establish a PCA for the Ulithi '23 datasets
@@ -10,6 +13,9 @@ repository: "metabolomics_Ulithi_23"
 #git add -A means to stage everything to be committed
 #git commit -m "message here" means to commit the changes and includes the message
 #git push means to push the commit to the main branch
+
+#-------------------basic PCA---------------------------------------------------
+
 rm(list=ls())   #clear the environment
 
 library(dplyr)
@@ -53,7 +59,7 @@ library(ggfortify)
 
 #read the csv files
 posnorm_ft <- read.csv("ulithi_23_PCA_csv/Ulithi23_posnorm_ft_6_24.csv", header = TRUE)
-posnorm_md <- read.csv("ulithi_23_PCA_csv/Ulithi23_posraw_md_6_26.csv", header = TRUE)
+posnorm_md <- read.csv("ulithi_23_PCA_csv/Ulithi23_posnorm_md_6_24.csv", header = TRUE)
 
 
 #make the PCA
@@ -69,12 +75,23 @@ PC_colors <- PCA_colors$scores
 
 #make the plot
 
-df_PC_colors <- data.frame(PC_colors)
+df_PC_colors <- data.frame(PC_colors)   #needs to be a dataframe so it can be manipulated
 
 final_df <- cbind(df_PC_colors, posnorm_md) #combine the PC values with the metadata
 
-stupid_plot <- ggplot(final_df, aes(Comp.1, Comp.2, colour = genus)) +
+stupid_plot <- ggplot(final_df, aes(Comp.1, Comp.2, colour = genus)) +  #pull genus from the metadata
     geom_point()  +
     ggtitle("stupid plot"); stupid_plot
 
-ggsave(plot = stupid_plot, filename = "stupid_plot.pdf",units = "in",width = 8.5, height = 8.5)
+ggsave(plot = stupid_plot, filename = "stupid_plot.pdf",units = "in",width = 8.5, height = 8.5) #in indicates inches
+
+#--------------------------------combine pos and neg----------------------------
+
+#combine the pos and neg ionization modes, keeping duplicates with the higher 
+#value overall
+
+#read the csv files
+posraw_ft <- read.csv("ulithi_23_PCA_csv/Ulithi23_posraw_ft_6_24.csv", header = TRUE)
+posraw_md <- read.csv("ulithi_23_PCA_csv/Ulithi23_posraw_md_6_24.csv", header = TRUE)
+
+

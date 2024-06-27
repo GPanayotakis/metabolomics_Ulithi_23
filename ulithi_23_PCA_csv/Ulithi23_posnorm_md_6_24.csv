@@ -1,4 +1,4 @@
-﻿genotype,location,sample_full_name,date_run,sample_ID,ionization_mode
+﻿genus,location,sample_full_name,date_run,sample_ID,ionization_mode
 Pocillopora,MogMog,20240603_Gabby_Ulithi_M_P201_5mg_mL_pos,20240603,P201,pos
 Pocillopora,MogMog,20240603_Gabby_Ulithi_M_P203_3_5mg_mL_pos,20240603,P203,pos
 Pocillopora,MogMog,20240603_Gabby_Ulithi_M_P204_3_5mg_mL_pos,20240603,P204,pos
