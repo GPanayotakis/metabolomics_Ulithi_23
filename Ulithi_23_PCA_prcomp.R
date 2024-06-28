@@ -38,7 +38,40 @@ pc.data <- summary(PCA); pc.data
 plot(PCA)
 x_vals <- PCA[["x"]]
 
+<<<<<<< HEAD
 ggplot(x_vals, aes(PC1, PC2))  +
+=======
+final_df <- cbind(df_PC_2, pos_norm_md) #combine the PC values with the metadata
+
+stupid_plot_2 <- ggplot(final_df, aes(Comp.1, Comp.2, colour = genus)) +  #pull genus from the metadata
+    geom_point()  +
+    ggtitle("stupid plot 2"); stupid_plot_2
+
+ggsave(plot = stupid_plot_2, filename = "stupid_plot_2.pdf",units = "in",width = 8.5, height = 8.5) #in indicates inches
+
+#make the plot
+
+
+final_df <- cbind(PC_3, pos_norm_md) #combine the PC values with the metadata
+
+stupid_plot_2 <- ggplot(final_df, aes(Comp.1, Comp.2, colour = genus)) +  #pull genus from the metadata
+    geom_point()  +
+    ggtitle("stupid plot 2"); stupid_plot_2
+
+ggsave(plot = stupid_plot_2, filename = "stupid_plot_2.pdf",units = "in",width = 8.5, height = 8.5) #in indicates inches
+
+#-------------------------------------------------------------------------------
+#try a diff way = BUTTS PLOT
+
+pos_norm_ft2 <- pos_norm_ft2[, -1]
+pos_norm_ft2 <- t(pos_norm_ft2)
+
+PCA <- prcomp(pos_norm_ft2)
+
+hm <- PCA[["x"]]
+
+ggplot(hm, aes(PC1, PC2))  +
+>>>>>>> f8790aad1df69066c46325a21c81452c3cc52b73
     geom_point()
 
 #make the PCA plot
